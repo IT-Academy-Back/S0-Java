@@ -51,7 +51,7 @@ git commit -m "fix: resolve login timeout error"
 | DRY      | No repeteixis codi. Fes servir mòduls       |
 | SOLID    | (Back-end) Disseny OOP amb bones pràctiques |
 
-     🧠 Utilitza patrons com _early return_ o _fail fast_ quan sigui necessari
+🧠 Utilitza patrons com _early return_ o _fail fast_ quan sigui necessari, i **evita estructures amb molts `if/else`**
 
 ---
 
