@@ -136,6 +136,8 @@ Ha d'incloure:
 
 ## 📌 Enunciat del exercici (si és aplicable)
 
+## ✨ Funcionalitats (si és aplicable)
+
 ## 🛠 Tecnologies  
 - Frontend: React, Tailwind  
 - Backend: Java, MySQL, MongoDB  
@@ -146,7 +148,7 @@ Ha d'incloure:
 3. Execució de l'aplicació.
 4. Proves: Com executar les proves.
 
-## 📸 Demo  
+## 📸 Demo
 [Enllaç a Vercel/Netlify] o captures de pantalla. (si és aplicable)
 
 ## 🧩 Diagrames i justificació de decisions tècniques (si és aplicable)
