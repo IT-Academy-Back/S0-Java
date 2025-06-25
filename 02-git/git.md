@@ -1,4 +1,4 @@
-# 📘 El teu primer `README.md` amb Git i GitHub
+# 📘 Introducció a Git i GitHub
 
 ---
 
