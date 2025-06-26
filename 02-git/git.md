@@ -468,13 +468,12 @@ Això et permet treballar des de diferents ordinadors, col·laborar amb altres p
 ## Clonació del projecte
 
 Per clonar aquest repositori al teu ordinador:
-
+````
 ```bash
 git clone git@github.com:el_teu_usuari/readme-project.git
 ```
 
 > Substitueix `el_teu_usuari` pel teu nom d’usuari real de GitHub.
-```
 
 💡 També pots fer servir HTTPS si no tens SSH configurat:
 
@@ -500,7 +499,7 @@ T’animes a col·laborar? Segueix aquests passos:
 
 1. Fes un *fork* d’aquest repositori (botó a dalt a la dreta a GitHub).
 2. Clona el teu fork:
-
+```
 ```bash
 git clone git@github.com:el_teu_usuari/readme-project.git
 ```
