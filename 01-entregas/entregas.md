@@ -8,7 +8,7 @@
 Aquest manual unifica els criteris essencials per fer lliuraments professionals de projectes, combinant:
 
 ✅ Bones pràctiques tècniques (codi net, estructura)  
-✅ Gestió professional (Git, documentació)
+✅ Gestió professional (Git, documentació)    
 ✅ Estàndards de qualitat (principis SOLID/KISS/DRY)
 
 ---
@@ -99,7 +99,7 @@ git commit -m "fix: resolve login timeout error"
 
 🖇️ **Control de la Complexitat**  
 
-✅ Reduir condicionals i bucles imbricats innecessaris.
+✅ Reduir condicionals i bucles imbricats innecessaris.    
 ✅ Evitar l'ús de variables temporals o `flags` que compliquin el flux.  
 ✅ Comprovar que totes les opcions dins de les condicions són realistes.  
 ✅ No utilitzar valors màgics
@@ -117,10 +117,10 @@ git commit -m "fix: resolve login timeout error"
 ---
 🔒 **Codi segur**  
 
-✅ No confiïs mai en l’input de l’usuari: valida les dades.  
-✅ Evita biblioteques no mantingudes o amb pocs usuaris.  
-✅ No mostris missatges d’error detallats a l’usuari final.  
-✅ El codi només han de tenir accés als recursos estrictament necessaris.  
+✅ No confiïs mai en l’input de l’usuari: valida les dades.    
+✅ Evita biblioteques no mantingudes o amb pocs usuaris.    
+✅ No mostris missatges d’error detallats a l’usuari final.     
+✅ El codi només han de tenir accés als recursos estrictament necessaris.    
 
 
      🧠  Els errors interns han d’anar a logs segurs.  
