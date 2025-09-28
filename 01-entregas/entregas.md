@@ -131,26 +131,26 @@ ___
 ### 3.1 README.md (Obligatori)
 Ha d'incloure:
 ```html
-# Nom del Projecte  
-**Descripció**: Breu explicació de l'objectiu.  
+# Project Name  
+**Description**: Brief explanation of the objective.  
 
-## 📌 Enunciat del exercici (si és aplicable)
+## 📌 Exercise Statement (if applicable)
 
-## ✨ Funcionalitats (si és aplicable)
+## ✨ Features (if applicable)
 
-## 🛠 Tecnologies  
+## 🛠 Technologies  
 - Frontend: React, Tailwind  
 - Backend: Java, MySQL, MongoDB  
 
-## 🚀 Instal·lació i Execució
-1. Clonar el repositori: `git clone ...`   
-2. Variables d'entorn: Crear `.env` amb...  
-3. Execució de l'aplicació.
-4. Proves: Com executar les proves.
+## 🚀 Installation and Execution
+1. Clone the repository: `git clone ...`  
+2. Environment variables: Create `.env` with...  
+3. Run the application.  
+4. Tests: How to run the tests.  
 
 ## 📸 Demo
-[Enllaç a Vercel/Netlify] o captures de pantalla. (si és aplicable)
+[Link to Vercel/Netlify] or screenshots. (if applicable)
 
-## 🧩 Diagrames i justificació de decisions tècniques (si és aplicable)
+## 🧩 Diagrams and Justification of Technical Decisions (if applicable)
 
 ```
