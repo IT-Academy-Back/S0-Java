@@ -483,7 +483,7 @@ git clone https://github.com/el_teu_usuari/readme-project.git
 
 ---
 
-### 12. Fork i pull request (simulació)
+### 12. Fork i pull request
 
 🧠 Un *fork* crea una còpia d’un repositori al teu GitHub personal. Serveix per treballar de manera independent en projectes on no tens accés directe.  
 Un *pull request* (PR) és una sol·licitud per integrar els teus canvis al repositori original.
@@ -492,7 +492,7 @@ Un *pull request* (PR) és una sol·licitud per integrar els teus canvis al repo
 
 🛠️ Afegeix aquesta secció al teu `README.md` per explicar com contribuir:
 
-```markdown
+````markdown
 ## Contribució al projecte
 
 T’animes a col·laborar? Segueix aquests passos:
@@ -519,7 +519,7 @@ git push -u origin feature/nova-seccio
 ```
 
 5. A GitHub, obre un *pull request* des de la teva branca cap a la branca `main` del repositori original.
-```
+````
 
 ---
 
