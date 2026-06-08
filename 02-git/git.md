@@ -1,65 +1,49 @@
-# 📘 Introducció a Git i GitHub
+# Introducció a Git i GitHub
+
+Git i GitHub formen part del dia a dia en desenvolupament. Serveixen per guardar l'evolució del codi, recuperar versions anteriors, treballar amb altres persones i entregar projectes de manera ordenada.
+
+No cal que dominis Git complet en aquest sprint. Ara l'objectiu és entendre el cicle bàsic: crear un repositori, veure què ha canviat, guardar canvis amb commits i pujar el projecte a GitHub.
+
+Més endavant treballaràs amb branques, pull requests, conflictes i fluxos de treball més professionals. En aquest bloc només volem que alguns conceptes et comencin a sonar.
+
+Si vols una explicació oficial del paper de Git i GitHub en el desenvolupament, pots consultar [GitHub Docs: About Git](https://docs.github.com/en/get-started/using-git/about-git). No cal llegir-ho tot ara, però és un bon recurs per tornar-hi quan hagis practicat una mica.
 
 ---
 
-> **⚠️ Fes servir un terminal compatible amb Bash**
->  
->  Per seguir les instruccions correctament, cal que utilitzis un **terminal compatible amb Bash**, on totes les comandes d’aquest exercici funcionaran tal com estan escrites.
->  
->  **Segons el teu sistema operatiu:**
->  
->  ✅ **macOS** i **Linux**: pots utilitzar el terminal que ja ve instal·lat.
->  
->  ✅ **Windows**: Pots fer servir **[Git Bash](https://git-scm.com/downloads)** (s’instal·la juntament amb Git).
->  O bé, si ja tens configurat el **WSL (Windows Subsystem for Linux)**, pots obrir la distribució de Linux i treballar-hi.
->  
->⚠️ **No facis servir Command Prompt o PowerShell**, ja que algunes comandes (com `touch`, `ssh-keygen`, etc.) podrien no funcionar o comportar-se de manera diferent.
+## Objectius
 
+En acabar aquest bloc hauries de poder:
 
+- Explicar la diferència entre Git i GitHub.
+- Crear un repositori Git local.
+- Consultar l'estat dels fitxers amb `git status`.
+- Preparar canvis amb `git add`.
+- Guardar canvis amb `git commit`.
+- Consultar l'historial amb `git log`.
+- Connectar un repositori local amb GitHub.
+- Pujar canvis amb `git push`.
 
 ---
 
-## 🧭 Introducció
+## Abans de començar
 
-En aquest exercici t'endinsaràs en l’ús de **[Git](https://git-scm.com/) i [GitHub](https://github.com/)**, dues eines essencials per a qualsevol desenvolupador/a. Aprendràs a portar el control dels canvis del teu projecte, a col·laborar de forma ordenada i a documentar-lo seguint bones pràctiques.
+Per seguir l'exercici necessites un terminal compatible amb Bash.
 
-L’objectiu és que siguis capaç de:
+- A macOS i Linux pots fer servir el terminal del sistema.
+- A Windows pots fer servir [Git Bash](https://git-scm.com/downloads), que s'instal·la juntament amb Git.
+- Si ja tens WSL configurat, també pots treballar des d'una distribució Linux.
 
-- Fer un seguiment clar i fiable dels canvis (traçabilitat).
-- Treballar de manera professional amb versions i branques.
-- Entendre com es connecta un projecte local amb un repositori remot.
-- Crear un `README.md` complet i ben estructurat.
+Evita fer aquest exercici amb Command Prompt o PowerShell si encara no tens experiència, perquè algunes comandes poden comportar-se de manera diferent.
 
-Tot plegat t’ajudarà a establir els fonaments per col·laborar en projectes reals i a presentar millor el teu treball com a desenvolupador/a.
-
----
-
-## 🗂 Estructura de l’exercici
-
-Per cada bloc, trobaràs:
-
-- 🧠 **Què has d’entendre**
-- 🛠️ **Què has de fer**
-
----
-
-### 1. Instal·lació i configuració de Git
-
-🧠 Git necessita saber qui ets per enregistrar els canvis correctament. El primer que hem de fer és instalarlo i configurarlo.
-
-🛠️ Mira si ja tens git instalat:
+Comprova si tens Git instal·lat:
 
 ```bash
 git --version
 ```
 
-Per instal·lar-lo:
+Si no el tens instal·lat, pots seguir la documentació oficial de [Git downloads](https://git-scm.com/downloads).
 
-- **Windows**: https://git-scm.com/download/win
-- **macOS**: `brew install git`
-- **Linux**: `sudo apt install git`
-
-Configura’l:
+Configura el teu nom i correu perquè Git pugui identificar l'autoria dels commits:
 
 ```bash
 git config --global user.name "El teu nom"
@@ -68,188 +52,248 @@ git config --global user.email "el.teu@email.com"
 
 ---
 
-### 2. Git vs GitHub
+## Git vs GitHub
 
-🧠 Entén la diferència entre:
+**Git** és l'eina que funciona al teu ordinador i guarda l'historial de canvis d'un projecte.
 
-- **Git** = eina local per controlar versions.
-- **GitHub** = plataforma online per compartir i col·laborar.
+**GitHub** és una plataforma online on pots pujar repositoris, compartir-los i col·laborar amb altres persones.
 
-🛠️ Escriu una definició pròpia de cadascun. Guardala per després afegirla al teu `README.md`. 
+Una manera simple de veure-ho:
 
----
+```text
+Git    -> controla versions al teu ordinador
+GitHub -> allotja repositoris a internet
+```
 
-### 3. Crear el projecte i inicialitzar Git
+Git pot funcionar sense GitHub. GitHub, en canvi, utilitza Git per gestionar els repositoris.
 
-🧠 Abans de començar a treballar amb Git, cal **crear una carpeta nova** per al teu projecte i **inicialitzar-hi un repositori Git**. Això vol dir que Git començarà a controlar els fitxers i els canvis que hi facis dins d’aquesta carpeta. També aprendràs a crear el teu primer fitxer: el `README.md`, que és el punt de partida de la documentació de qualsevol projecte.
+Una analogia útil:
 
-🛠️ Passos:
+- Git és com la llibreta de canvis del projecte.
+- GitHub és el lloc on comparteixes aquesta llibreta amb altres persones.
 
-1. Crea una carpeta nova per al projecte:
-   ```bash
-   mkdir readme-project
-   ```
-   Això crea una carpeta anomenada `readme-project`.
-
-2. Entra dins la carpeta:
-   ```bash
-   cd readme-project
-   ```
-
-3. Inicialitza un repositori Git dins d’aquesta carpeta:
-   ```bash
-   git init
-   ```
-   Aquesta comanda configura Git perquè comenci a fer el seguiment dels fitxers que afegiràs. Es crearà una carpeta oculta .git pots comprobar que existeix dent ls -a per exemple
-
-4. Crea un fitxer anomenat `README.md`:
-   ```bash
-   touch README.md
-   ```
-
-5. Obre el fitxer `README.md` en el teu editor de text o codi i escriu-hi un títol utilitzant la sintaxi de [Markdown](https://www.markdownguide.org/basic-syntax/). Per exemple:
-   ```markdown
-   # Projecte fictici de documentació amb Git i GitHub
-   ```
-
-ℹ️ Pots consultar la sintaxi bàsica de Markdown aquí: [https://www.markdownguide.org/basic-syntax/](https://www.markdownguide.org/basic-syntax/)
+Quan treballes localment, Git sap què has canviat al teu ordinador. Quan fas `push`, envies aquests commits al repositori remot perquè també existeixin a GitHub.
 
 ---
 
-### 4. Estats dels fitxers i primer commit
+## Model mental: on són els teus canvis
 
-🧠 Quan treballes amb Git, cada fitxer pot estar en un d’aquests **tres estats**:
+Git és més fàcil d'entendre si imagines quatre zones:
 
-1. **Modificat (modified)**: Has fet canvis al fitxer, però Git encara no els té en compte.
-2. **Afegit (staged)**: Li has dit a Git que vols incloure aquests canvis en el proper "snapshot".
-3. **Confirmat (committed)**: Els canvis ja formen part de l’historial del projecte.
+```text
+working directory -> staging area -> local repository -> remote repository
+```
 
-Aquesta separació permet tenir control total sobre **què s’enregistra** i **quan**.
+| Zona | Què vol dir |
+|------|-------------|
+| `working directory` | La carpeta on edites fitxers. |
+| `staging area` | La zona on prepares què entrarà al proper commit. |
+| `local repository` | L'historial de commits guardat al teu ordinador. |
+| `remote repository` | La còpia del projecte a GitHub o una altra plataforma. |
 
-🛠️ Fem el primer commit del teu `README.md`:
+Les comandes bàsiques encaixen així:
 
-1. Comprova l'estat del projecte:
-   ```bash
-   git status
-   ```
-   Això et mostrarà els fitxers que han canviat i en quin estat estan. Just després de crear `README.md`, apareixerà com a "Untracked" (no seguit).
+```text
+git status -> mira què ha canviat
+git add    -> passa canvis a staging
+git commit -> guarda una foto local
+git push   -> puja commits al remot
+git pull   -> baixa canvis del remot
+```
 
-2. Afegeix el fitxer `README.md` a la zona d'stage:
-   ```bash
-   git add README.md
-   ```
-   Ara el fitxer està **preparat** per ser confirmat.
-
-3. Fes el primer **commit** amb un missatge clar:
-   ```bash
-   git commit -m "docs: create initial README"
-   ```
-   Ara Git ha registrat aquest canvi com un punt de control dins de l’historial del projecte.
-
-💡 El prefix `docs:` segueix l’estil **[Conventional Commits](https://www.conventionalcommits.org/)** i indica que estàs treballant en documentació.
-
-A partir d’aquí, qualsevol canvi que facis al projecte seguirà aquest cicle: **modificar → afegir → confirmar**.
-
+Aquesta és la idea més important del bloc. Si entens aquest flux, després serà molt més fàcil entendre branques, conflictes i pull requests.
 
 ---
 
-### 5. Comandes d’inspecció
+## Vocabulari que et començarà a sonar
 
-🧠 Un dels punts forts de Git és que et permet **consultar els canvis** que has fet i **navegar per l’historial** del projecte. Això és clau per entendre l’evolució del teu treball i identificar possibles errors.
+No cal dominar aquests conceptes ara, però és útil que et sonin perquè els veuràs sovint durant el curs:
 
-Amb Git pots:
+| Concepte | Idea principal |
+|----------|----------------|
+| `repository` | Carpeta d'un projecte controlada per Git. |
+| `commit` | Punt de control que guarda un canvi concret. |
+| `branch` | Línia de treball separada de la principal. |
+| `merge` | Acció d'unir canvis d'una branca amb una altra. |
+| `merge conflict` | Situació en què Git no pot decidir automàticament quin canvi conservar. |
+| `remote` | Repositori allotjat fora del teu ordinador, normalment a GitHub. |
+| `origin` | Nom habitual del repositori remot principal. |
+| `push` | Enviar commits locals cap a GitHub. |
+| `pull` | Baixar canvis de GitHub cap al teu ordinador. |
+| `pull request` | Proposta per revisar i integrar canvis en un repositori. |
+| `workflow` | Forma acordada de treballar amb Git en un projecte o equip. |
 
-- Veure què ha canviat abans de confirmar (`git diff`)
-- Consultar quins fitxers estan preparats (`git status`)
-- Revisar l’historial de commits (`git log`)
-
-🛠️ Posa-ho en pràctica:
-
-1. Fes un canvi al `README.md`. Per exemple, afegeix una línia com:
-   ```markdown
-   Aquest projecte serveix per aprendre Git pas a pas.
-   ```
-
-2. Abans d’afegir el fitxer, consulta què ha canviat amb:
-   ```bash
-   git diff
-   ```
-   Veuràs en vermell el contingut eliminat (si n’hi ha) i en verd el que s’ha afegit. Encara no has fet cap commit nou: estàs **inspeccionant els canvis locals**.
-
-3. Afegeix el fitxer i confirma el canvi:
-   ```bash
-   git add README.md
-   git commit -m "docs: add project description"
-   ```
-
-4. Ara consulta l’historial de commits:
-   ```bash
-   git log
-   ```
-   Veuràs una llista cronològica amb els missatges dels commits, l’autor i l'identificador únic (hash). Pots recórrer l’historial amb les fletxes i sortir amb la tecla `q`.
-
-5. Afegeix una nova secció al final del teu `README.md` com a pràctica:
-   ```markdown
-   ## Objectiu del projecte
-
-   Practicar Git i GitHub creant un README ben estructurat i aplicant bones pràctiques de versionat.
-   ```
-
-6. I finalment, fes un commit per registrar aquest canvi:
-   ```bash
-   git add README.md
-   git commit -m "docs: add project goal section"
-   ```
-
-🎯 Ara ja tens una visió clara de com veure **què has fet**, **quan** i **per què**. Aquestes comandes seran les teves aliades a llarg termini.
-
+En aquest sprint practicaràs sobretot repositoris, commits, `push` i una mica de repositori remot. Les branques, conflictes, pull requests i fluxos de treball els treballaràs més endavant amb eines i dinàmiques més avançades.
 
 ---
 
-### 6. Bones pràctiques de commits
+## Exercici guiat: crea el teu primer repositori
 
-🧠 Un bon commit és clar, específic i estructurat.
+Crearàs un projecte petit només per practicar Git i GitHub.
 
-🛠️ Fes dos commits amb l’estil *conventional commits*:
+### 1. Crea una carpeta de projecte
 
 ```bash
-git commit -m "docs: add technologies section"
-git commit -m "docs: fix typo in description"
+mkdir readme-project
+cd readme-project
+```
+
+### 2. Inicialitza Git
+
+```bash
+git init
+```
+
+Aquesta comanda converteix la carpeta actual en un repositori Git. A partir d'aquest moment, Git pot seguir els canvis que hi facis.
+
+Git crearà una carpeta oculta anomenada `.git`. No l'has de tocar manualment: és on Git guarda la informació interna del repositori. Si elimines aquesta carpeta, el projecte deixarà de tenir historial Git.
+
+### 3. Crea un README
+
+```bash
+touch README.md
+```
+
+Obre `README.md` amb el teu editor i afegeix:
+
+```markdown
+# Readme Project
+
+Aquest projecte serveix per practicar Git i GitHub.
+```
+
+Si no coneixes Markdown, pots consultar la guia [Markdown basic syntax](https://www.markdownguide.org/basic-syntax/).
+
+---
+
+## El cicle bàsic de Git
+
+Quan treballes amb Git, repetiràs moltes vegades aquest cicle:
+
+```text
+modificar -> revisar -> afegir -> confirmar
+```
+
+Aquest ordre és important. No facis commits a cegues. Primer mira què ha canviat, després decideix què vols incloure i finalment guarda el canvi amb un missatge clar.
+
+### 1. Revisa l'estat del projecte
+
+```bash
+git status
+```
+
+Git t'indicarà que `README.md` encara no està seguit.
+
+`git status` és una de les comandes que més faràs servir. Abans de qualsevol `add`, `commit`, `push` o entrega, mira l'estat del repositori. T'ajuda a evitar dues errades habituals: oblidar fitxers importants o pujar fitxers que no tocaven.
+
+### 2. Afegeix el fitxer a l'àrea de preparació
+
+```bash
+git add README.md
+```
+
+Amb `git add` li dius a Git quins canvis vols incloure en el proper commit.
+
+Pensa en `git add` com preparar una motxilla: no tot el que tens sobre la taula ha d'entrar-hi. Pots afegir un fitxer concret, com en l'exemple, o afegir diversos fitxers si tenen sentit dins del mateix commit.
+
+### 3. Fes el primer commit
+
+```bash
+git commit -m "docs: create initial README"
+```
+
+Un commit és un punt de control del teu projecte. El missatge hauria d'explicar què has canviat.
+
+Un bon commit hauria de representar una idea petita i coherent. Per exemple: crear el README, afegir una funció, corregir una validació o actualitzar instruccions. Si un commit barreja moltes coses diferents, després costa entendre l'historial.
+
+### 4. Consulta l'historial
+
+```bash
+git log
+```
+
+Veuràs l'historial de commits. Si el terminal entra en una vista de lectura, pots sortir-ne amb `q` o `:q`.
+
+---
+
+## Practica amb més canvis
+
+Afegeix una nova secció al `README.md`:
+
+```markdown
+## Objectiu
+
+Aprendre el cicle bàsic de Git: status, add, commit i log.
+```
+
+Abans de guardar-ho en un commit, mira què ha canviat:
+
+```bash
+git diff
+```
+
+`git diff` et mostra les diferències exactes entre el que tenies i el que has modificat. És una manera ràpida de revisar-te abans de guardar el canvi.
+
+Si veus una línia que no volies canviar, encara ets a temps de corregir-la abans del commit.
+
+Ara afegeix i confirma el canvi:
+
+```bash
+git add README.md
+git commit -m "docs: add project goal"
+```
+
+Torna a mirar l'historial:
+
+```bash
+git log
 ```
 
 ---
 
-### 7. Connexió a GitHub
+## Missatges de commit
 
-🧠 Per poder pujar el teu projecte des del teu ordinador a GitHub, cal establir una connexió entre el teu repositori local i el repositori remot que ara crearem a [https://github.com](https://github.com). Aquesta connexió permet fer comandes com `git push` (pujar canvis) i `git pull` (baixar-los).
+Un bon missatge de commit és curt, concret i ajuda a entendre l'evolució del projecte.
+
+Un missatge dolent diu poc:
+
+```bash
+git commit -m "final"
+git commit -m "changes"
+git commit -m "update"
+```
+
+El problema no és l'anglès, sinó la manca d'informació. D'aquí a dues setmanes no sabràs què volia dir `update`.
+
+Exemples:
+
+```bash
+git commit -m "docs: add installation steps"
+git commit -m "feat: add game board"
+git commit -m "fix: validate invalid moves"
+```
+
+En aquest sprint no cal que memoritzis totes les convencions. Però sí és bona idea començar a escriure missatges que expliquin el canvi.
+
+Si vols saber més sobre aquest estil, pots consultar [Conventional Commits](https://www.conventionalcommits.org/).
 
 ---
 
-#### 🔗 Documentació recomanada
+## Connecta el projecte amb GitHub
 
-- [GitHub: Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
-- [GitHub: Adding a new SSH key to your account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
-- [GitHub: Pushing your first commit](https://docs.github.com/en/get-started/quickstart/create-a-repo#push-an-existing-repository-from-the-command-line)
+Ara pujaràs el repositori local a GitHub.
 
----
+### 1. Crea un repositori a GitHub
 
-#### 🛠️ Passos per connectar el teu projecte amb GitHub
+Ves a [https://github.com](https://github.com) i crea un repositori nou anomenat `readme-project`.
 
- **1️⃣ Crea un repositori remot a GitHub**
+No afegeixis README, `.gitignore` ni cap altre fitxer des de GitHub, perquè ja tens el projecte creat al teu ordinador.
 
-- Ves a [https://github.com](https://github.com)
-- Crea un repositori nou anomenat `readme-project`
-- ⚠️ **No afegeixis cap fitxer extra** (ni README, `.gitignore`, etc.)
+El motiu és evitar començar amb dos historials diferents: un al teu ordinador i un altre a GitHub. En aquest primer exercici volem una situació simple: primer crees el projecte local, després el connectes amb un repositori remot buit.
 
----
+### 2. Afegeix el repositori remot
 
-**2️⃣ Afegeix el repositori remot**
-
-GitHub et mostrarà un bloc que diu:
-
-> …or push an existing repository from the command line
-
-I et dona aquestes comandes:
+GitHub et mostrarà unes comandes semblants a aquestes:
 
 ```bash
 git remote add origin git@github.com:el_teu_usuari/readme-project.git
@@ -257,271 +301,131 @@ git branch -M main
 git push -u origin main
 ```
 
-📝 **Què fa cada comanda?**
+Què fa cada comanda:
 
-- `git remote add origin ...` → Enllaça el repositori local amb el remot de GitHub.
-- `git branch -M main` → Assegura que la branca principal es diu `main`. (Només cal si no existia o té un altre nom).
-- `git push -u origin main` → Puja el contingut al repositori remot i recorda quina és la branca remota per defecte.
+- `git remote add origin ...` connecta el teu repositori local amb el repositori de GitHub.
+- `git branch -M main` assegura que la branca principal es diu `main`.
+- `git push -u origin main` puja els commits locals a GitHub i recorda aquesta connexió per a futurs `push`.
 
-Executa les comandes desde l'arrel del teu projecte.
+Executa aquestes comandes des de l'arrel del projecte.
 
----
+### 3. Comprova el resultat
 
-**3️⃣ Comprova que funciona**
-
-Després d'executar aquestes comandes, entra a GitHub i comprova que el fitxer `README.md` ja apareix al repositori remot.
+Entra al repositori de GitHub amb el navegador i comprova que hi apareix el teu `README.md`.
 
 ---
 
-#### 🧩 Si GitHub et demana configurar una clau SSH
+## Si GitHub et demana configurar SSH
 
-És possible que GitHub et demani **autenticació SSH** (especialment si treballes amb l’enllaç que comença amb `git@github.com:`).
+És possible que GitHub et demani configurar una clau SSH si fas servir una URL que comença per `git@github.com:`.
 
-📣 **Pots demanar ajuda a una IA generativa**, com ara:
+No cal que entenguis SSH a fons ara. Només has de saber que és una manera segura d'identificar el teu ordinador davant de GitHub.
 
-> 🔍 *"Com genero i afegeixo una clau SSH per GitHub a Windows/macOS/Linux?"*
+Pots seguir la documentació oficial:
 
-També pots seguir aquestes passes mínimes:
+- [Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+- [Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+
+També pots fer servir HTTPS si encara no vols configurar SSH:
 
 ```bash
-ssh-keygen -t ed25519 -C "el.teu@email.com"
-cat ~/.ssh/id_ed25519.pub
+git remote add origin https://github.com/el_teu_usuari/readme-project.git
 ```
 
-Després, ves a [https://github.com/settings/keys](https://github.com/settings/keys), clica "New SSH key", i enganxa-hi la clau pública.
-
 ---
 
-### 8. Sincronització: `push` i `pull`
+## Sincronitzar canvis: push i pull
 
-🧠 Quan treballes amb Git i GitHub, sovint necessitaràs **sincronitzar** els canvis entre el teu ordinador i el repositori remot (a GitHub):
-
-- 🔼 `git push` = envia els canvis del teu ordinador cap a GitHub.
-- 🔽 `git pull` = descarrega els canvis des de GitHub cap al teu ordinador.
-
-Això et permet treballar des de diferents ordinadors, col·laborar amb altres persones o recuperar canvis que hagis fet directament des de la web de GitHub.
-
----
-
-🛠️ Posa-ho en pràctica:
-
-1. Fes un petit canvi local al fitxer `README.md`. Per exemple, afegeix una línia nova com:
-
-   ```markdown
-   Aquesta línia s’ha afegit des del meu ordinador.
-   ```
-
-2. Desa els canvis, afegeix-los i confirma’ls:
-
-   ```bash
-   git add README.md
-   git commit -m "docs: update README with local note"
-   ```
-
-3. Envia els canvis a GitHub amb:
-
-   ```bash
-   git push
-   ```
-
-4. Ara ves al teu repositori **a través del navegador** i edita el `README.md` directament des de la interfície web de GitHub. Per exemple, afegeix una línia com:
-
-   ```markdown
-   Aquesta línia s’ha afegit des de GitHub.
-   ```
-
-5. Torna al terminal i descarrega els canvis amb:
-
-   ```bash
-   git pull
-   ```
-
-   Així tindràs **tots els canvis sincronitzats** tant localment com remotament.
-
----
-
-💡 **Important:** Si edites el mateix lloc del fitxer localment i a GitHub abans de fer `pull`, podries provocar un **conflicte**, que hauràs de resoldre manualment. En aquest exercici no busquem provocar-ne, però és bo saber que pot passar.
-
----
-
-### 9. Branques i fusió (`merge`)
-
-🧠 Git permet crear **branques** per treballar en funcionalitats o canvis de manera aïllada, sense afectar la branca principal (`main`). Un cop acabat el treball, es poden **fusionar** (merge) els canvis.
-
----
-
-🛠️ Posa-ho en pràctica:
-
-1. Crea una nova branca per afegir una secció d’instal·lació:
-
-   ```bash
-   git checkout -b feature/install-section
-   ```
-
-2. Afegeix al fitxer `README.md` la secció:
-
-   ```markdown
-   ## Instal·lació
-   ```
-
-3. Desa, afegeix i confirma els canvis:
-
-   ```bash
-   git add .
-   git commit -m "docs: add install section"
-   ```
-
-4. Torna a la branca principal i integra els canvis:
-
-   ```bash
-   git checkout main
-   git merge feature/install-section
-   ```
-
-5. Puja-ho a GitHub:
-
-   ```bash
-   git push
-   ```
-
----
-
-💡 **Recomanació:** Posa noms descriptius a les branques (`feature/`, `fix/`, `docs/`, etc.) per mantenir l’ordre i facilitar la col·laboració.
-
----
-
-### 10. Conflictes de fusió
-
-🧠 Un **conflicte de fusió** passa quan dues branques han modificat la mateixa línia d’un fitxer. Git no pot decidir quina versió mantenir i et demana que ho resolguis manualment.
-
----
-
-🛠️ Simula un conflicte:
-
-1. Crea dues branques des de `main`:
-
-   ```bash
-   git checkout -b feature/afegir-frase-1
-   ```
-
-   Afegeix al `README.md`:
-
-   ```markdown
-   Aquesta frase és de la branca 1.
-   ```
-
-   Fes commit i torna a `main`.
-
-   ```bash
-   git add .
-   git commit -m "docs: afegeix frase 1"
-   git checkout main
-   ```
-
-2. Crea l’altra branca:
-
-   ```bash
-   git checkout -b feature/afegir-frase-2
-   ```
-
-   Afegeix **una altra frase a la mateixa línia** del `README.md`:
-
-   ```markdown
-   Aquesta frase és de la branca 2.
-   ```
-
-   Fes commit, torna a `main` i intenta fer `merge` de les dues:
-
-   ```bash
-   git checkout main
-   git merge feature/afegir-frase-2
-   ```
-
-3. Git mostrarà un **conflicte**. Obre el fitxer i resol manualment el que vols conservar. Exemple de frase resolta:
-
-   ```markdown
-   > 🔧 Conflicte resolt manualment entre dues branques.
-   ```
-
-4. Un cop resolt, marca el fitxer com a resolt i fes commit:
-
-   ```bash
-   git add README.md
-   git commit -m "fix: resol conflicte entre frases"
-   ```
-
----
-
-💡 Els conflictes són normals en projectes col·laboratius. És important **entendre què ha passat** i **resoldre’ls amb calma**.
-
----
-
-### 11. Clonar un repositori
-
-🧠 *Clonar* un repositori vol dir descarregar-ne una còpia completa al teu ordinador per començar a treballar localment amb tot l’historial de Git.
-
----
-
-🛠️ Afegeix aquesta secció al teu `README.md`:
-
-```markdown
-## Clonació del projecte
-
-Per clonar aquest repositori al teu ordinador:
-````
-```bash
-git clone git@github.com:el_teu_usuari/readme-project.git
-```
-
-> Substitueix `el_teu_usuari` pel teu nom d’usuari real de GitHub.
-
-💡 També pots fer servir HTTPS si no tens SSH configurat:
+Quan el repositori local ja està connectat amb GitHub, faràs servir aquestes comandes sovint:
 
 ```bash
-git clone https://github.com/el_teu_usuari/readme-project.git
+git push
 ```
+
+Envia els teus commits locals cap a GitHub.
+
+```bash
+git pull
+```
+
+Baixa canvis de GitHub cap al teu ordinador.
+
+En Sprint 0, el més important és que entenguis aquesta idea:
+
+```text
+el teu ordinador <-> GitHub
+```
+
+Si treballes sol i sempre fas `pull` abans de començar i `push` quan acabes, normalment evitaràs molts problemes.
 
 ---
 
-### 12. Fork i pull request
+## Branques, conflictes i fluxos de treball
 
-🧠 Un *fork* crea una còpia d’un repositori al teu GitHub personal. Serveix per treballar de manera independent en projectes on no tens accés directe.  
-Un *pull request* (PR) és una sol·licitud per integrar els teus canvis al repositori original.
+En projectes reals, normalment no es treballa sempre directament sobre `main`. Es creen branques per separar canvis, es revisen pull requests i es resolen conflictes quan dues persones han modificat la mateixa part del codi.
 
----
+Ara només cal que et sonin aquestes idees:
 
-🛠️ Afegeix aquesta secció al teu `README.md` per explicar com contribuir:
+- Una `branch` permet treballar en una funcionalitat sense tocar directament la branca principal.
+- Un `merge` integra els canvis d'una branca dins d'una altra.
+- Un `merge conflict` apareix quan Git no pot unir canvis automàticament.
+- Un `pull request` serveix perquè una altra persona revisi els teus canvis abans d'integrar-los.
+- Un `workflow` defineix com treballa l'equip: quines branques fa servir, quan obre pull requests i com revisa el codi.
 
-````markdown
-## Contribució al projecte
-
-T’animes a col·laborar? Segueix aquests passos:
-
-1. Fes un *fork* d’aquest repositori (botó a dalt a la dreta a GitHub).
-2. Clona el teu fork:
-```
-```bash
-git clone git@github.com:el_teu_usuari/readme-project.git
-```
-
-3. Crea una nova branca:
-
-```bash
-git checkout -b feature/nova-seccio
-```
-
-4. Fes els teus canvis, confirma'ls i puja la branca:
-
-```bash
-git add .
-git commit -m "feat: afegeix nova secció"
-git push -u origin feature/nova-seccio
-```
-
-5. A GitHub, obre un *pull request* des de la teva branca cap a la branca `main` del repositori original.
-````
+No et preocupis si encara no ho veus clar. Més endavant faràs servir eines i pràctiques més avançades per treballar amb branques, revisions, conflictes i col·laboració real.
 
 ---
 
-💡 **Recorda:** El control de versions i la col·laboració són habilitats fonamentals per treballar en equip. Aprendre Git i GitHub et prepara per contribuir a projectes professionals o de codi obert amb confiança.
+## Errors habituals quan comences amb Git
 
+Si alguna cosa no funciona, revisa aquests punts abans de bloquejar-te:
+
+- Estàs executant la comanda dins de la carpeta correcta? Comprova-ho amb `pwd`.
+- Has inicialitzat Git amb `git init`?
+- Has fet `git add` abans de `git commit`?
+- El commit ha fallat perquè Git no sap el teu `user.name` o `user.email`?
+- Has creat el repositori remot buit o GitHub ja tenia un README propi?
+- Estàs fent `push` a la branca correcta?
+- Has copiat bé la URL del repositori remot?
+
+Quan dubtis, la primera comanda hauria de ser gairebé sempre:
+
+```bash
+git status
+```
+
+Git acostuma a donar pistes útils. No cal entendre cada paraula del missatge d'error al principi, però sí aprendre a llegir-lo amb calma i buscar la part que diu què espera Git que facis.
+
+---
+
+## Què has de saber al final d'aquest bloc
+
+Abans de continuar, comprova que pots fer això sense seguir tots els passos literalment:
+
+- Crear una carpeta de projecte.
+- Inicialitzar Git amb `git init`.
+- Veure l'estat amb `git status`.
+- Afegir canvis amb `git add`.
+- Crear un commit amb `git commit`.
+- Consultar l'historial amb `git log`.
+- Explicar la diferència entre Git i GitHub.
+- Pujar el projecte a GitHub amb `git push`.
+
+Si això ho tens clar, ja tens la base que necessites per començar a entregar projectes amb més ordre.
+
+---
+
+## Recursos recomanats
+
+Per consultar mentre fas l'exercici:
+
+- [GitHub Docs: About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [Git documentation](https://git-scm.com/doc)
+- [GitHub Docs: Get started](https://docs.github.com/en/get-started)
+- [Markdown basic syntax](https://www.markdownguide.org/basic-syntax/)
+- [Conventional Commits](https://www.conventionalcommits.org/)
+
+Per ampliar quan vulguis entendre Git amb més profunditat:
+
+- [Pro Git](https://git-scm.com/book/en/v2), llibre de referència gratuït
+- [The Missing Semester: Version Control and Git](https://missing.csail.mit.edu/2026/version-control/), classe amb materials i vídeo
