@@ -1,6 +1,6 @@
 # Sprint 0 - Desenvolupament
 
-Aquest Sprint 0 serveix per començar el curs amb una base comuna. Abans d'entrar a PHP, Java, bases de dades, APIs o Spring Boot, necessites entendre com es treballa en un projecte de desenvolupament: com et mous pels fitxers, com guardes canvis, com prepares una entrega i com es comuniquen les parts d'una aplicació web.
+Aquest Sprint 0 serveix per començar el curs amb una base comuna. Abans d'entrar a Frontend, backend, PHP, Java, bases de dades, APIs, etc.., necessites entendre com es treballa en un projecte de desenvolupament: com et mous pels fitxers, com guardes canvis, com prepares una entrega i com es comuniquen les parts d'una aplicació web.
 
 També serveix perquè puguis començar a decidir si t'interessa més el frontend, el backend o la connexió entre totes dues parts. Per fer aquesta decisió, abans necessites veure una mica de cada peça, entendre el vocabulari bàsic i tenir una primera idea de què passa al navegador, què passa al servidor i com es comuniquen.
 
@@ -19,27 +19,29 @@ No busquem que dominis totes les eines ara. Busquem que tinguis prou context per
 ## Materials
 
 ### Introducció a eines imprescindibles
-- [Introducció al terminal, Linux i Bash](03-terminal/terminal.md)
-- [Introducció a Git i GitHub](02-git/git.md)
-- [Bones pràctiques per a lliuraments de projectes](01-entregas/entregas.md)
+- [Introducció al terminal, Linux i Bash](./03-terminal/terminal.md)
+- [Introducció a Git i GitHub](./02-git/git.md)
+- [Bones pràctiques per a lliuraments de projectes](./01-entregas/entregas.md)
 
 ### Fonament de la Web
-- [Fonaments pràctics de la web](04-web-app-intro/web-app-intro.md)
-
-Evaluació? como? en live o entregable? De Tools i fonaments de la web. (Mini entrevista)
+- [Fonaments pràctics de la web](./04-web-app-intro/web-app-intro.md)
+- Mini entrevista de avaluació
 ### Introducció al Frontend
-- [Frontend Basics 1: HTML i CSS](05-frontend-basics/01-html-css.md)
+- Introducció i entorn Javascript de desenvolupament
+- [Frontend Basics 1: HTML i CSS](./05-frontend-basics/01-html-css.md)
 - Exercicis Javascript
-- [Frontend Basics 2: JavaScript i DOM](05-frontend-basics/02-javascript-dom.md)
+- [Frontend Basics 2: JavaScript i DOM](./05-frontend-basics/02-javascript-dom.md)
 - [Frontend Basics 3: Fetch i API](05-frontend-basics/03-fetch-api.md)   => ELIMINAR??
 - TicTacToe Front Project
 
 ### Backend amb Java i Spring Boot
+- Introducció i entorn Java de desenvolupament
 - Exercicis Java
-- [Abans de començar el Tic-Tac-Toe Backend Challenge](06-tic-tac-toe-backend/abans-de-comencar.md)
-- [Tic-Tac-Toe Backend Challenge](06-tic-tac-toe-backend/tic-tac-toe-backend.md)
+- [Abans de començar el Tic-Tac-Toe Backend Challenge](./06-tic-tac-toe-backend/abans-de-comencar.md)
+- [Tic-Tac-Toe Backend Challenge](./06-tic-tac-toe-backend/tic-tac-toe-backend.md)
 
 ### Fullstack amb PHP i Laravel
+- Introducció i entorn PHP de desenvolupament
 - Exercicis PHP
 - Tic-Tac-Toe
 
